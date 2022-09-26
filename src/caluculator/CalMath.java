@@ -2,14 +2,16 @@ package caluculator;
 
 import java.util.Scanner;
 
-public class CalMath {
+public class CalMath
+{
     public static void main(String[] args) {
         int choice,x,y,r;
-        while(true){
+        while(true)
+        {
 
             System.out.println("choose");
             System.out.println("1.addition");
-            System.out.println("2.substraction");
+            System.out.println("2.subtraction");
             System.out.println("3.multiplication");
             System.out.println("4.division");
             System.out.println("5.exit");
@@ -24,29 +26,33 @@ public class CalMath {
             {
                 case 1:
                     System.out.println("Addition of x and y");
-                    r=x+y;
-                    System.out.println("Ans is"+r);
+                    r = x + y;
+                    System.out.println("Ans is" + r);
                     break;
                 case 2:
-                    System.out.println("substraction");
-                    r=x-y;
-                    System.out.println("Ans is"+r);
+                    System.out.println("subtraction");
+                    r = x - y;
+                    System.out.println("Ans is" + r);
                     break;
                 case 3:
                     System.out.println("multiplication");
-                    r=x*y;
-                    System.out.println("Ans is"+r);
+                    r = x * y;
+                    System.out.println("Ans is" + r);
                     break;
                 case 4:
-                    System.out.println("division");
-                    r=x/y;
-                    System.out.println("Ans is"+r);
+                    try {
+                        System.out.println("division");
+                        r = x / y;
+                        System.out.println("Ans is" + r);
+                    }catch (Exception e){
+                        System.out.println("division by Zero is not possible");
+                    }
                     break;
                 case 5:
                     System.exit(0);
-
+            }
             }
 
         }
-    }
 }
+
