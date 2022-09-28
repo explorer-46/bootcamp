@@ -1,26 +1,31 @@
 package com.hotel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Bill {
     public static void main(String[] args) {
         int qty, choice, total = 0, ch,c;
+        String name;
         Fooditems fd = new Fooditems(10, 20, 110, 140);
         Fooditems dy = new Fooditems(15, 60, 130, 150);
+        HashMap<String,String> map=new HashMap<String,String>();
+        ArrayList<String> tl=new ArrayList<>();
         ArrayList<String> item = new ArrayList<>();
         ArrayList<Integer> quantity = new ArrayList<>();
         while (true) {
             System.out.println("Select your case");
             System.out.println("1.Normal case");
             System.out.println("2.Takeway");
+            System.out.println("3.View bills");
             Scanner sc=new Scanner(System.in);
             choice=sc.nextInt();
 
             switch(choice) {
 
                 case 1:
-                    while (true) {
+
                         System.out.println("choose the items");
                         System.out.println("1.Coffee Price=" + fd.getCoffee());
                         System.out.println("2.Shake price=" + fd.getShake());
@@ -65,18 +70,28 @@ public class Bill {
                                 break;
 
                             case 5:
+                                System.out.println("Enter your Name");
+                                name=sc.next();
+
                                 System.out.println("\tBILL");
                                 System.out.println("***************");
                                 for (int i = 0; i <= item.size() - 1; i++) {
                                     System.out.println("ITEM NAME:" + item.get(i) + "\tQTY:" + quantity.get(i));
 
-
+                                }
                                     System.out.println("Total money you want to pay is \t" + total);
-                                    total = 0;
+
                                     item.removeAll(item);
                                     quantity.removeAll(quantity);
 
-                                }
+
+                                map.put("mode","normal");
+                                map.put("Amount",String.valueOf(total));
+
+                                map.put("Customer Name",name);
+                                tl.add(String.valueOf(map));
+                                total = 0;
+
 
                                 break;
 
@@ -89,7 +104,7 @@ public class Bill {
                         }
 
                 break;
-                        }
+
 
                 case 2:
 
@@ -136,6 +151,8 @@ public class Bill {
                               break;
 
                           case 5:
+                              System.out.println("Enter your name");
+                              String name1= sc.next();
                               System.out.println("\tBILL");
                               System.out.println("***************");
                               for(int i=0;i<=item.size()-1;i++)
@@ -144,9 +161,16 @@ public class Bill {
 
                               }
                               System.out.println("Total money you want to pay is \t"+total);
-                              total=0;
+
+
                               item.removeAll(item);
                               quantity.removeAll(quantity);
+                              map.put("mode","normal");
+                              map.put("Amount",String.valueOf(total));
+
+                              map.put("Customer Name",name1);
+                              tl.add(String.valueOf(map));
+                              total=0;
 
                               break;
 
@@ -159,8 +183,12 @@ public class Bill {
                       }
 
                     break;
+                case 3:
+                    System.out.println(tl);
+                break;
                 default:
                     System.out.println("Invalid choice");
+
 
             }
         }
